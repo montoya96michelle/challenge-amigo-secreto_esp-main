@@ -11,11 +11,22 @@ function agregarAmigo(){
     } else {
         amigos.push(nombre);
         limpiarCampo();
-        console.log(amigos);
+        listaDeAmigos();
     }
 }
 
 // borrar el texto del campo de entrada
 function limpiarCampo() {
     document.getElementById('amigo').value = "";
+}
+
+// boton borrar lista de amigo y mostrar lista generada
+function listaDeAmigos(){
+    let lista = document.getElementById('listaAmigos');
+    lista.innerHTML = ""; //vacia el interior
+
+    for (let i = 0; i < amigos.length; i++) {
+        lista.innerHTML += `<li> ${amigos[i]} </li>`;
+    }
+
 }
