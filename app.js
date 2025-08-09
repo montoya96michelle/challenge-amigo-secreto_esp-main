@@ -12,9 +12,15 @@ function agregarAmigo(){
     } else {
         amigos.push(nombre);
         limpiarCampo();
+        enfoqueInput();
         sortearAmigo();
         listaDeAmigos();
     }
+}
+
+// enfocar el input despues de cada ingreso
+function enfoqueInput() {
+    document.getElementById('amigo').focus();
 }
 
 // borrar el texto del campo de entrada
