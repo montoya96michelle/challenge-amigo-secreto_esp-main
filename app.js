@@ -9,13 +9,7 @@ function agregarAmigo(){
         alert("Por favor, inserte un nombre.");
         limpiarCampo();
         return;
-    }// } else {
-    //     amigos.push(nombre);
-    //     limpiarCampo();
-    //     enfoqueInput();
-    //     listaDeAmigos();
-    //     sortearAmigo();
-    // }
+    }
     amigos.push(nombre);
     limpiarCampo();
     enfoqueInput();
