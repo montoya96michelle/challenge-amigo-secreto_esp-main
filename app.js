@@ -1,56 +1,53 @@
-let amigos = [];
-let amigoSorteado = "";
-let minimaCantidadAmigos = 2;
+let friends = [];
+let drawnFriend = "";
+let minFriendsRequired = 2;
 
-// boton agregar amigo a la lista
-function agregarAmigo(){
-    let nombre = document.getElementById('amigo').value;
-    if (nombre === "" ||  Number(nombre)) {
-        alert("Por favor, inserte un nombre.");
-        limpiarCampo();
+// Button: Add friend to the list
+function addFriend() {
+    let name = document.getElementById('friend').value;
+    if (name === "" || Number(name)) {
+        alert("Please enter a valid name.");
+        clearInput();
         return;
     }
-    amigos.push(nombre);
-    limpiarCampo();
-    enfoqueInput();
-    listaDeAmigos();
-
-
+    friends.push(name);
+    clearInput();
+    focusInput();
+    renderFriendList();
 }
 
-// enfocar el input despues de cada ingreso
-function enfoqueInput() {
-    document.getElementById('amigo').focus();
+// Focus the input field after each entry
+function focusInput() {
+    document.getElementById('friend').focus();
 }
 
-// borrar el texto del campo de entrada
-function limpiarCampo() {
-    document.getElementById('amigo').value = "";
+// Clear the input field text
+function clearInput() {
+    document.getElementById('friend').value = "";
 }
 
-// boton borrar lista de amigo y mostrar lista generada
-function listaDeAmigos(){
-    let lista = document.getElementById('listaAmigos');
-    lista.innerHTML = ""; //vacia el interior
+// Render the updated list of friends
+function renderFriendList() {
+    let list = document.getElementById('friendsList');
+    list.innerHTML = ""; // Empty the content
 
-    for (let i = 0; i < amigos.length; i++) {
-        lista.innerHTML += `<li> ${amigos[i]} </li>`;
+    for (let i = 0; i < friends.length; i++) {
+        list.innerHTML += `<li>${friends[i]}</li>`;
     }
 }
 
-// boton para sortear amigos
-function sortearAmigo() {
-    if (amigos.length < minimaCantidadAmigos) {
-        alert("Agrega al menos dos amigos para sortear.");
+// Draw a random friend
+function drawFriend() {
+    if (friends.length < minFriendsRequired) {
+        alert("Please add at least two friends to proceed.");
         return;
     }
 
-    if (amigos.length >= minimaCantidadAmigos) {
-        let indiceAleatorio = Math.floor(Math.random() * amigos.length);
-        let mostrarResultado = document.getElementById('resultado');
-        amigoSorteado = amigos[indiceAleatorio];
-        mostrarResultado.innerHTML = `El amigo secreto sorteado es: ${amigoSorteado}`;
-        document.getElementById('drawButton').setAttribute("disabled", "true");
-    }
+    let randomIndex = Math.floor(Math.random() * friends.length);
+    drawnFriend = friends[randomIndex];
 
+    let resultDisplay = document.getElementById('result');
+    resultDisplay.innerHTML = `The drawn secret friend is: ${drawnFriend}`;
+    
+    document.getElementById('drawButton').setAttribute("disabled", "true");
 }
